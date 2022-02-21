@@ -1,0 +1,119 @@
+:root {
+  --nav-height: 60px;
+  --footer-height: 60px;
+  --color-theme-1: #1a374d;
+  --color-theme-2: #406882;
+  --color-theme-3: #6998ab;
+  --color-theme-3-hover: #77a8bb;
+  --color-theme-4: #b1d0e0;
+  --color-board-font: #162f42;
+}
+
+body {
+  display: grid;
+  min-width: 100%;
+  min-height: 100vh;
+  grid-template-rows: var(--nav-height) 1fr var(--footer-height);
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "nav"
+    "content"
+    "footer";
+  color: var(--color-theme-4);
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: nav;
+  background-color: var(--color-theme-1);
+}
+
+nav p {
+  margin: 1rem;
+  font-size: large;
+}
+
+main {
+  display: grid;
+  grid-area: content;
+  background-color: var(--color-theme-2);
+  justify-items: center;
+  align-items: center;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: footer;
+  background-color: var(--color-theme-1);
+}
+
+.reset-btn {
+  background-color: var(--color-theme-4);
+  color: var(--color-board-font);
+  font-size: 1rem;
+  border-radius: 4rem;
+  border: none;
+}
+
+footer .reset-btn {
+  display: block;
+  width: auto;
+  padding: 0.5rem 1rem;
+}
+
+main .board {
+  display: grid;
+
+  /* Keep the board square */
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  height: calc(95vmin - var(--nav-height) - var(--footer-height));
+  width: calc(95vmin - var(--nav-height) - var(--footer-height));
+  background-color: var(--color-theme-1);
+}
+
+main .board .winning-cell,
+main .board .winning-cell:hover {
+  background-color: var(--color-theme-4);
+}
+
+.board div {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  color: var(--color-board-font);
+  background-color: var(--color-theme-3);
+  border: 0.5vmin solid var(--color-theme-1);
+  align-items: center;
+  justify-content: center;
+  font-size: 12vmin;
+  font-family: sans-serif;
+}
+
+.board div:hover {
+  background-color: var(--color-theme-3-hover);
+}
+
+/* mobile landscape orientation, remove footer, add into right of nav area */
+@media screen and (max-width: 900px) and (orientation: landscape) {
+  body {
+    grid-template-rows: var(--nav-height) 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "nav footer"
+      "content content";
+    color: var(--color-theme-4);
+  }
+
+  main .board {
+    /* landscape mobile doesn't have a footer, so don't subtract it */
+    height: calc(90vmin - var(--nav-height));
+    width: calc(90vmin - var(--nav-height));
+  }
+}
