@@ -10,11 +10,6 @@
 }
 
 body {
-  padding: 0;
-  margin: 0;
-}
-
-body {
   display: grid;
   min-width: 100%;
   min-height: 100vh;
@@ -25,6 +20,8 @@ body {
     "content"
     "footer";
   color: var(--color-theme-4);
+  padding: 0;
+  margin: 0;
 }
 
 nav {
@@ -56,6 +53,14 @@ footer {
   background-color: var(--color-theme-1);
 }
 
+.reset-btn {
+  background-color: var(--color-theme-4);
+  color: var(--color-board-font);
+  font-size: 1rem;
+  border-radius: 4rem;
+  border: none;
+}
+
 footer .reset-btn {
   display: block;
   width: auto;
@@ -64,6 +69,7 @@ footer .reset-btn {
 
 main .board {
   display: grid;
+
   /* Keep the board square */
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -92,26 +98,6 @@ main .board .winning-cell:hover {
 
 .board div:hover {
   background-color: var(--color-theme-3-hover);
-}
-
-.reset-btn {
-  background-color: var(--color-theme-4);
-  color: var(--color-board-font);
-  font-size: 1rem;
-  border-radius: 4rem;
-  border: none;
-}
-
-/* tablet or desktop */
-@media screen and (min-width: 600px) {
-  body {
-    grid-template-rows: var(--nav-height) 1fr var(--footer-height);
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "nav footer"
-      "content";
-    color: var(--color-theme-4);
-  }
 }
 
 /* mobile landscape orientation, remove footer, add into right of nav area */
